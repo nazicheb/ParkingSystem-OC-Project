@@ -13,7 +13,13 @@ public class FareCalculatorService {
         double difference_In_Time = ticket.getOutTime().getTime()-ticket.getInTime().getTime();
         
         //TODO: Some tests are failing here. Need to check if this logic is correct
-        double duration = difference_In_Time/(1000 * 60 * 60);
+        double limit30=30*60*1000;
+        double duration;
+        
+        if(difference_In_Time>=limit30)
+        	duration = difference_In_Time/(1000 * 60 * 60);
+        else 
+        	duration=0;
       
         switch (ticket.getParkingSpot().getParkingType()){
             case CAR: {
